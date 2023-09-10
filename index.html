@@ -7,8 +7,22 @@
     <title>HNG Assignment 1</title>
     <style>
         body {
-            margin: 3%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             background-color: whitesmoke;
+        }
+
+        .card {
+            width: 20%;
+            padding: 20px;
+            text-align: center;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
         }
 
         p.currentdayoftheweek {
@@ -21,45 +35,29 @@
             border-radius: 50%;
         }
 
-        P.SlackUserName {
+        p.SlackUserName {
             font-size: 20px;
             font-weight: bold;
         }
 
         p {
-            font: weight normal;
-        }
-
-        .main {
-            margin-bottom: 3%;
-            padding: 10px;
-            width: 100%;
-            text-align: end;
-        }
-
-        .main-center {
-            margin: auto;
-            width: 20%;
-            padding: 10px;
-            text-align: center;
-
+            font-weight: normal;
         }
     </style>
-
 </head>
 
 <body>
-    <div class="main">
-        <p><time datetime="08:30:12">08:30:12pm</time></p>
-        <p class="currentdayoftheweek ">Monday</p>
+    <div class="card">
+        <div class="main">
+            <p><time datetime="08:30:12">08:30:12pm</time></p>
+            <p class="currentdayoftheweek">Monday</p>
+        </div>
+        <div class="main-center">
+            <p class="SlackUserName">NIKE</p>
+            <img src="images/nike.jpeg" alt="NIKE">
+            <p>Frontend</p>
+        </div>
     </div>
-    <div class="main-center">
-
-        <P class="SlackUserName">NIKE</P>
-        <img src="images/nike.jpeg" alt="NIKE">
-        <P>Frontend</P>
-    </div>
-
 </body>
 
 </html>
