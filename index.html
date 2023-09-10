@@ -39,7 +39,16 @@
         p {
             font-weight: normal;
         }
-        .day-of-week {
+
+        #day-of-week {
+            font-weight: bold;
+        }
+
+        #utc-time {
+            font-weight: bold;
+        }
+
+        #track {
             font-weight: bold;
         }
     </style>
@@ -50,9 +59,9 @@
         <div class="main">
             <p class="SlackUserName" data-testid="slackUserName">Slack Name: NIKE</p>
             <img src="images/nike.jpeg" alt="Nike" data-testid="slackDisplayImage">
-            <div class="day-of-week" data-testid="currentDayOfTheWeek">Loading...</div>
-            <p data-testid="currentUTCTime">Time: <span id="utc-time">Loading...</span></p>
-            <p data-testid="myTrack">Track: Frontend</p>
+            <p data-testid="currentDayOfTheWeek">Day Of The Week: <span id="day-of-week"></span></p>
+            <p data-testid="currentUTCTime">Time: <span id="utc-time"></span></p>
+            <p data-testid="myTrack">Track: <span id="track">Frontend</span></p>
             <a href="https://github.com/Mariahnikee/HNGphase1" data-testid="githubURL">GitHub</a>
         </div>
     </div>
@@ -60,12 +69,16 @@
     <script>
         function updateUTCDateTime() {
             const utcTimeElement = document.getElementById('utc-time');
-            const currentUTC = new Date().toUTCString();
-            utcTimeElement.textContent = currentUTC;
+            const currentUTC = new Date();
+            const hours = currentUTC.getUTCHours().toString().padStart(2, '0');
+            const minutes = currentUTC.getUTCMinutes().toString().padStart(2, '0');
+            const seconds = currentUTC.getUTCSeconds().toString().padStart(2, '0');
+            const formattedTime = `${hours}:${minutes}:${seconds}`;
+            utcTimeElement.textContent = formattedTime;
         }
 
         function updateDayOfWeek() {
-            const dayOfWeekElement = document.querySelector('.day-of-week');
+            const dayOfWeekElement = document.getElementById('day-of-week');
             const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
             const currentDayIndex = new Date().getDay();
             const currentDayOfWeek = daysOfWeek[currentDayIndex];
