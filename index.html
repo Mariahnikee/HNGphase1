@@ -25,10 +25,6 @@
             border-radius: 10px;
         }
 
-        p.currentdayoftheweek {
-            font-weight: normal;
-        }
-
         img {
             width: 90px;
             height: 130px;
@@ -43,22 +39,45 @@
         p {
             font-weight: normal;
         }
+        .day-of-week {
+            font-weight: bold;
+        }
     </style>
 </head>
 
 <body>
-    <div class="card" data-testid="personal-data-card">
+    <div class="card">
         <div class="main">
-            <p data-testid="current-time"><time datetime="08:30:12">08:30:12pm</time></p>
-            <p class="currentdayoftheweek" data-testid="current-day">Monday</p>
-        </div>
-        <div class="main-center">
-            <p class="SlackUserName" data-testid="slack-username">NIKE</p>
-            <img src="images/nike.jpeg" alt="NIKE" data-testid="profile-image">
-            <p data-testid="job-title">Frontend</p>
-            <a href="https://github.com/Mariahnikee" data-testid="github-link">Github</a>
+            <p class="SlackUserName" data-testid="slackUserName">Slack Name: NIKE</p>
+            <img src="images/nike.jpeg" alt="Nike" data-testid="slackDisplayImage">
+            <div class="day-of-week" data-testid="currentDayOfTheWeek">Loading...</div>
+            <p data-testid="currentUTCTime">Time: <span id="utc-time">Loading...</span></p>
+            <p data-testid="myTrack">Track: Frontend</p>
+            <a href="https://github.com/Mariahnikee/HNGphase1" data-testid="githubURL">GitHub</a>
         </div>
     </div>
+
+    <script>
+        function updateUTCDateTime() {
+            const utcTimeElement = document.getElementById('utc-time');
+            const currentUTC = new Date().toUTCString();
+            utcTimeElement.textContent = currentUTC;
+        }
+
+        function updateDayOfWeek() {
+            const dayOfWeekElement = document.querySelector('.day-of-week');
+            const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const currentDayIndex = new Date().getDay();
+            const currentDayOfWeek = daysOfWeek[currentDayIndex];
+            dayOfWeekElement.textContent = currentDayOfWeek;
+        }
+
+        setInterval(updateUTCDateTime, 1000);
+        setInterval(updateDayOfWeek, 1000);
+
+        updateUTCDateTime();
+        updateDayOfWeek();
+    </script>
 </body>
 
 </html>
